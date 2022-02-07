@@ -1,6 +1,12 @@
 import DicomRead
 import dcm2png
+import os
+
+import mean
 
 if __name__ == "__main__":
-    ds = (DicomRead.read("/Users/mythrijl/Documents/VII/Project/Codes/Feature Extraction/image","0000a175-0e68-4ca4-b1af-167204a7e0bc.dcm"))
-    print(dcm2png.convert_to_png(ds))
+    dcm2png.convert_to_png()
+    inputdir = './output'
+    test_list = [f for f in os.listdir(inputdir)]
+    for f in test_list[:10]:
+        print(mean.getmean("./output/"+f))

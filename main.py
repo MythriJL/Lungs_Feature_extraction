@@ -1,3 +1,5 @@
+from cv2 import imread
+
 import DicomRead
 import dcm2png
 import os
@@ -9,4 +11,5 @@ if __name__ == "__main__":
     inputdir = './output'
     test_list = [f for f in os.listdir(inputdir)]
     for f in test_list[:10]:
-        print(mean.getmean("./output/"+f))
+        image = imread("./output/"+f)
+        print(mean.getmean(image))

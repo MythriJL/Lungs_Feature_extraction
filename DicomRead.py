@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import pydicom
 import pydicom.data
 

@@ -1,6 +1,4 @@
 from cv2 import imread
-
-import DicomRead
 import dcm2png
 import os
 

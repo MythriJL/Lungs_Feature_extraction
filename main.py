@@ -15,7 +15,7 @@ from pywt import dwt2
 import features
 
 if __name__ == "__main__":
-    fields = ['Mean', 'Standard Deviation', 'Entropy', 'Root Mean Square', 'Variance', 'Smoothness', 'Kurtosis', 'Skewness', 'Contrast', 'Co-relation', 'Energy', 'Homogeneity']
+    fields = ['Mean', 'Standard Deviation', 'Entropy', 'Root Mean Square', 'Variance', 'Smoothness', 'Kurtosis', 'Skewness', 'Contrast', 'Co-relation', 'Energy', 'Homogeneity', 'Disease']
     csvFilename = "output.csv"
     dcm2png.convert_to_png()
     inputdir = './output'
@@ -55,7 +55,7 @@ if __name__ == "__main__":
             list.append(image.mean())
             list.append(image.std())
             list.append(skimage.measure.shannon_entropy(image))
-            list.append(stat.rms)
+            list.append((stat.rms)[0])
             list.append(ndimage.variance(image))
             list.append(smoothness)
             list.append(kurtosis(image, axis=None))
@@ -64,4 +64,6 @@ if __name__ == "__main__":
             list.append(graycoprops(g, 'correlation')[0][0])
             list.append(Energy)
             list.append(graycoprops(g, 'homogeneity')[0][0])
+            list.append('Covid')
+            # change the value to Non-covid for non covid input
             csvwriter.writerow(list)
